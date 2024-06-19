@@ -1,0 +1,77 @@
+{% load static %}
+{% include 'eventmanager_header.html' %}
+<div id="page-wrapper" class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-wrapper-content"><br>
+					<h1>ADD Event</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- /Home -->
+<br>
+<form method ="POST" class="post-form" action="/add_event/" enctype="multipart/form-data">
+	{% csrf_token %}
+		<div class="container h-100">
+			<h3 class="fs-4 card-title fw-bold mb-4">Add Event</h3>
+			<div class="mb-3">
+				<div class="mb-2 w-100">
+					<label class="text-muted" for="email">Email</label>
+				</div>
+				<input id="email" type="email" class="form-control" name="email" value="{{email1}}" readonly>
+			</div>
+            <div class="mb-3">
+				<div class="mb-2 w-100">
+					<label class="text-muted" for="title">Title</label>
+				</div>
+				<input id="title" type="text" class="form-control"  name="title" required>
+			</div>
+			<div class="mb-3">
+				<div class="mb-2 w-100">
+					<label class="mb-2 text-muted" for="description">Description</label>
+				</div>
+				<input id="description" type="text"  class="form-control" name="description" required>
+			</div>
+            <div class="mb-3">
+                <div class="mb-2 w-100">
+                    <label class="text-muted">Image</label>
+                </div>
+                <input id="formFileMultiple" type="file" class="form-control" name="image" multiple required>
+            </div>
+            <div class="mb-3">
+				<div class="mb-2 w-100">
+					<label class="text" for="venue">Venue</label>
+				</div>
+				<input id="venue" type="text" class="form-control" name="venue" required>
+			</div>
+			<div class="mb-3">
+				<div class="mb-2 w-100">
+					<label class="text" for="venueaddress">Venueaddress</label>
+				</div>
+				<input id="venueaddress" type="text" class="form-control" name="venueaddress" required>
+			</div>
+            <div class="mb-3">
+				<div class="mb-2 w-100">
+					<label class="text" for="contactnumber">Contact Number</label>
+				</div>
+				<input id="contactnumber" type="number" class="form-control" name="contactnumber" required>
+			</div>
+			<div class="mb-3">
+				<div class="mb-2 w-100">
+					<label class="text" for="datatime">Date&Time</label>
+				</div>
+				<input id="datatime" type="datetime-local" class="form-control"  name="datatime" required>
+			</div>
+            <div class="mb-3">
+				<div class="mb-2 w-100">
+					<label class="text" for="entryfee">Entryfee</label>
+				</div>
+				<input id="entryfee" type="number" class="form-control" name="entryfee" required>
+			</div>
+            <button type="submit" class="btn btn-primary ms-auto">Submit</button><br>
+	<div>{{msg}}</div>	</div>
+</form>
+{% include 'footer.html' %}

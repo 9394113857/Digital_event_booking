@@ -1,0 +1,45 @@
+{% load static %}
+{% include 'admin_header.html' %}		<!-- /Header -->
+<div id="page-wrapper" class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-wrapper-content"><br>
+					<h1>Reviews</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- /Home -->
+<br>
+    <table align="center" border="2" cellpadding="10" cellspacing="0" width="80%">
+	<thead>
+	<tr>
+		<th>ID</th>
+		<th>EVENT_TITLE</th>
+		<th>CUSTOMER_EMAIL</th>
+		<th>DESCRIPTION</th>
+		<th>EVENT_TITLE</th>
+		<th>RATING</th>
+		<th>REVIEW</th>
+
+	</tr>
+    </thead>
+	<tbody>
+	{% for review in review  %}
+	<tr>
+		<td>{{review.id}}</td>
+		<td>{{review.addevent.title}}</td>
+		<td>{{review.customer.email}}</td>
+		<td>{{review.description}}</td>
+		<td>{{review.addevent.title}}</td>
+		<td>{{review.rating}}</td>
+		<td>{{review.review}}</td>
+{% empty %}
+	<td>There is No Reviews</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table><br>
+{% include 'footer.html' %}

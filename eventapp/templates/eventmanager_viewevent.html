@@ -1,0 +1,54 @@
+{% load static %}
+{% include 'eventmanager_header.html' %}
+	<div id="page-wrapper" class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-wrapper-content"><br>
+					<h1>View Events</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- /Home -->
+
+<br>
+<table align="center" border="2" cellpadding="10" cellspacing="0" width="80%">
+	<thead>
+	<tr>
+		<th>Id</th>
+		<th>Email</th>
+		<th>Title</th>
+		<th>Description</th>
+		<th>Venue</th>
+		<th>Venueaddress</th>
+		<th>Contact Number</th>
+		<th>DateTime</th>
+		<th>Entryfee</th>
+		<th>Image</th>
+	</tr>
+    </thead>
+	<tbody>
+	{% for addevent in addevent  %}
+	<tr>
+		<td>{{addevent.id}}</td>
+		<td>{{addevent.email}}</td>
+		<td>{{addevent.title}}</td>
+		<td>{{addevent.description}}</td>
+		<td>{{addevent.venue}}</td>
+		<td>{{addevent.venueaddress}}</td>
+		<td>{{addevent.contactnumber}}</td>
+		<td>{{addevent.datatime}}</td>
+		<td>{{addevent.entryfee}}</td>
+		<td><img src="{{addevent.image.url}}" class="img-responsive" width="100px" height="130px"/>
+		<td><a href="/eventmanager_edit/{{addevent.id}}">edit</a></td>
+		<td><a href="/eventmanager_viewbook/{{addevent.id}}">View_Book</a></td>
+		<td><a href="/eventmanager_viewreview/{{addevent.id}}">View_Review</a></td>
+{% empty %}
+	<td>There is No Events</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table><br>
+{% include 'footer.html' %}

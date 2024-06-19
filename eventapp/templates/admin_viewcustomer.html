@@ -1,0 +1,51 @@
+{% load static %}
+{% include 'admin_header.html' %}
+
+<div id="page-wrapper" class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-wrapper-content"><br>
+					<h1>Admin View Customers</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- /Home -->
+
+<br>
+<table align="center" border="2" cellpadding="10" cellspacing="0" width="80%">
+	<thead>
+	<tr>
+		<th>Id</th>
+		<th>Email</th>
+		<th>Fullname</th>
+		<th>Mobile</th>
+		<th>Address</th>
+		<th>City</th>
+		<th>Delete</th>
+	</tr>
+    </thead>
+	<tbody>
+	{% for customer in customer  %}
+	<tr>
+		<td>{{customer.id}}</td>
+		<td>{{customer.email}}</td>
+		<td>{{customer.fullname}}</td>
+		<td>{{customer.mobile}}</td>
+		<td>{{customer.address}}</td>
+		<td>{{customer.city}}</td>
+		<td><a href="/Admin_customer_delete/{{customer.id}}" onclick="return confirm ('Really want delete')">delete</a></td>
+
+		{% empty %}
+	<td>There is No Customers</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table><br>
+{% include 'footer.html' %}
+
+
+</body>
+</html>

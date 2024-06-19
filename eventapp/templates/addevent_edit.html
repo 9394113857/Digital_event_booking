@@ -1,0 +1,78 @@
+{% load static %}
+{% include 'eventmanager_header.html' %}
+<div id="page-wrapper" class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-wrapper-content"><br>
+					<h1>Event edit</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- /Home --><br>
+<form method ="POST" class="post-form" enctype="multipart/form-data" action="{% url 'addevent_update' %}">
+    {% csrf_token %}
+    <div class="container h-100">
+        <h1 class="fs-4 card-title fw-bold mb-4">Update Here</h1>
+        <div class="mb-3">
+             <div class="mb-3">
+            <input id="id" type="hidden"  name="id" value="{{addevent.id}}" readonly >
+        </div>
+                <label class="text-muted"  for="description">Email</label>
+
+        <input id="email" type="text"  class="form-control"  name="email" value="{{addevent.email}}" required >
+        <div class="mb-3">
+            <label class="mb-2 text-muted" for="title">Title</label>
+            <input id="title" type="text"  class="form-control"  name="title" value="{{addevent.title}}" required >
+        </div>
+        <div class="mb-3">
+            <div class="mb-2 w-100">
+                <label class="text-muted"  for="description">description</label>
+            </div>
+            <input id="description" type="text" class="form-control"  name="description" value="{{addevent.description}}" required>
+        </div>
+        <div class="mb-3">
+            <div class="mb-2 w-100">
+                <label class="text-muted" >Image</label>{{addevent.image}}
+                <input id="formFileMultiple" class="form-control" type="file" name="image"    /><br>
+            </div>
+        </div>
+        <div class="mb-3">
+            <div class="mb-2 w-100">
+                <label class="text-muted" for="venue">venue</label>
+            </div>
+            <input id="venue" type="text" class="form-control"  name="venue" value="{{addevent.venue}}" required>
+        </div>
+        <div class="mb-3">
+            <div class="mb-2 w-100">
+                <label class="text-muted" for="venueaddress">Venueaddress</label>
+            </div>
+            <input id="venueaddress" type="text" class="form-control"  name="venueaddress" value="{{addevent.venueaddress}}" required>
+        </div>
+        <div class="mb-3">
+            <div class="mb-2 w-100">
+                <label class="text" for="contactnumber">ContactNumber</label>
+            </div>
+            <input id="contactnumber" type="number"  class="form-control" name="contactnumber" value="{{addevent.contactnumber}}" required>
+        </div>
+
+         <div class="mb-3">
+            <div class="mb-2 w-100">
+                <label class="text" for="contactnumber">DateTime</label>
+            </div>
+            <input id="time" type="datetime-local"  class="form-control" name="datatime" value="{{addevent.datatime}}" required>
+        </div>
+
+        <div class="mb-3">
+            <div class="mb-2 w-100">
+                <label class="text" for="entryfee">entryfee</label>
+            </div>
+            <input id="entryfee" type="number" class="form-control" name="entryfee" value="{{addevent.entryfee}}" required>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary ms-auto">submit</button><br>
+    </div>
+</form>
+{% include 'footer.html' %}

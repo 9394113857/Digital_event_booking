@@ -1,0 +1,45 @@
+{% load static %}
+{% include 'admin_header.html' %}
+<div id="page-wrapper" class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-wrapper-content"><br>
+					<h1>Bookings</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- /Home -->
+
+<br>
+<table align="center" border="2" cellpadding="10" cellspacing="0" width="80%">
+	<thead>
+	<tr>
+		<th>ID</th>
+		<th>EVENT_TITLE</th>
+		<th>CUSTOMER_EMAIL</th>
+		<th>COST</th>
+		<th>DATETIME</th>
+		<th>BookingTime</th>
+
+	</tr>
+    </thead>
+	<tbody>
+	{% for book in book  %}
+	<tr>
+		<td>{{book.id}}</td>
+		<td>{{book.addevent.title}}</td>
+		<td>{{book.customer.email}}</td>
+		<td>{{book.cost}}</td>
+<td>{{book.addevent.datatime}}</td>
+				<td>{{book.Date_time}}</td>
+
+{% empty %}
+	<td>There is No Bookings</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table><br>
+{% include 'footer.html' %}

@@ -1,0 +1,47 @@
+{% load static %}
+{% include 'eventmanager_header.html' %}
+	<div id="page-wrapper" class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-wrapper-content"><br>
+					<h1>My Profile</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- /Home -->
+<br>
+<br>
+<table align="center" border="2" cellpadding="10" cellspacing="0" width="80%">
+	<thead>
+	<tr>
+		<th>ID</th>
+		<th>EMAIL</th>
+		<th>TITLE</th>
+		<th>MOBILE</th>
+		<th>ADDRESS</th>
+		<th>CITY</th>
+<!--		<th>STATUS</th>-->
+	</tr>
+    </thead>
+	<tbody>
+	{% for eventmanager in eventmanager  %}
+	<tr>
+		<td>{{eventmanager.id}}</td>
+		<td>{{eventmanager.email}}</td>
+		<td>{{eventmanager.title}}</td>
+		<td>{{eventmanager.mobile}}</td>
+		<td>{{eventmanager.address}}</td>
+		<td>{{eventmanager.city}}</td>
+
+		<td><a href="/manager_edit/{{eventmanager.id}}">edit</a></td>
+		<td><a href="/eventmanager_delete/{{eventmanager.id}}" onclick="return confirm('Are you really want delete your account');">delete</a></td>
+{% empty %}
+	<td>There is No details</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table><br>
+{% include 'footer.html' %}

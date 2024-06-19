@@ -1,0 +1,70 @@
+{% load static %}
+{% include 'customer_header.html' %}
+<div id="page-wrapper" class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-wrapper-content"><br>
+					<h1>My Event Bookings</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- /Home -->
+
+<br>
+<table align="center" border="2" cellpadding="10" cellspacing="0" width="80%">
+	<thead>
+	<tr>
+		<th>ID</th>
+		<th>EVENT_TITLE</th>
+		<th>CUSTOMER_EMAIL</th>
+		<th>COST</th>
+		<th>DATETIME</th>
+		<th>BookingTime</th>
+		<th>Status</th>
+	</tr>
+    </thead>
+	<tbody>
+	{% for book in books  %}
+	<tr>
+		<td>{{book.id}}</td>
+		<td>{{book.addevent.title}}</td>
+		<td>{{book.customer.email}}</td>
+		<td>{{book.cost}}</td>
+		<td>{{book.addevent.datatime}}</td>
+				<td>{{book.Date_time}}</td>
+
+		 <td>
+                                {% if book.status == 1 %}
+                                    <span class="green">Accepted</span>
+                                {% elif book.status == 2 %}
+                                    <span class="red">Rejected</span>
+                                {% elif book.status == 3 %}
+                                    <span class="black">cancel</span>
+                                {% else %}
+                                    <span class="black">pending</span>
+
+                                {% endif %}
+            </td>
+                    <td>
+                    {% if book.status == 1  %}
+                    <a href="{% url 'cancel_book' booking_id=book.id %}" class="btn btn-danger" >Cancel</a>
+                        {% elif book.status == 3  %}
+                                 <button class="btn btn-danger" disabled="disabled" data-toggle="modal" data-target="#reply_modal">canceled</button>
+
+                        {% elif book.status == 2  %}
+
+
+                        {% else %}
+                        {% endif%}
+                        </td>
+
+		{% empty %}
+	<td>There is No Bookings</td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table><br>
+{% include 'footer.html' %}

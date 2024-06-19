@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% include 'header.html' %}
+<div id="page-wrapper" class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-wrapper-content"><br>
+					<h1>Customer Login</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Home -->
+<form method ="POST" class="post-form" action="/customer_login/">
+{% csrf_token %}
+		<div class="container h-100"><br>
+                 <h3 class="fs-4 card-title fw-bold mb-4">Login Here</h3>
+            <div class="mb-2 w-100">
+                <label class="col-sm-2 col-form-label" for="Email">Email</label>
+                <input id="Email" type="email" class="form-control" name="email" required>
+            </div><br>
+             <div class="mb-2 w-100">
+                <label class="col-sm-2 col-form-label" for="password">Password</label>
+                <input id="password" type="password" class="form-control" name="password" required>
+            </div><br>
+           <button type="submit" class="btn btn-primary ms-auto">Login</button><br>
+           <div>{{msg}}</div> U are not exist? <a href="/regpage/">Register</a>
+        </div>
+</form>
+{% include 'footer.html' %}

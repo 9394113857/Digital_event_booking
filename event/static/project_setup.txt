@@ -1,0 +1,36 @@
+# These are just basic examples not actual commands but flow correct only:-
+
+# 1. Create a new Django project
+django-admin startproject Digital_event_booking
+cd myproject
+
+# 2. Create a new app within the project
+python manage.py startapp Digital_event_bookingapp
+
+# 3. Add the new app to INSTALLED_APPS in myproject/settings.py
+# (Manually edit the settings.py file to include 'streetfoodapp')
+
+# 4. Make migrations for the new app
+python manage.py makemigrations
+
+# 5. Apply the migrations to the database
+python manage.py migrate
+
+# 6. Create a superuser to access the Django admin
+python manage.py createsuperuser
+
+# 7. Run the development server
+python manage.py runserver
+
+# 8. Stop the server
+Ctrl + c 
+
+==========================================================
+
+# Generate requirements.txt containing currently installed packages
+pip freeze > requirements.txt
+# (This command saves a list of all installed packages and their versions into requirements.txt)
+
+# Install packages from requirements.txt
+pip install -r requirements.txt
+# (This command installs all packages listed in requirements.txt)

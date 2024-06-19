@@ -1,0 +1,72 @@
+{% load static %}
+{% include 'eventmanager_header.html' %}
+<div id="page-wrapper" class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-wrapper-content"><br>
+					<h1>View Bookings</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- /Home -->
+<br>
+<table align="center" border="2" cellpadding="10" cellspacing="0" width="80%">
+	<thead>
+	<tr>
+		<th>ID</th>
+		<th>EVENT_ID</th>
+		<th>CUSTOMER_EMAIL</th>
+		<th>COST</th>
+		<th>DATETIME</th>
+		<th>Status</th>
+		<th>Action</th>
+	</tr>
+    </thead>
+	<tbody>
+	{% for book in book  %}
+
+
+
+	<tr>
+		<td>{{book.id}}</td>
+		<td>{{book.addevent.id}}</td>
+		<td>{{book.customer.email}}</td>
+		<td>{{book.cost}}</td>
+		<td>{{book.Datetime}}</td>
+		            <td>
+                                 {% if book.status == 1 %}
+                                    <span class="green">Accepted</span>
+                                {% elif book.status == 2 %}
+                                    <span class="red">Rejected</span>
+                                {% elif book.status == 3 %}
+                                    <span class="black">cancel</span>
+                                {% else %}
+                                    <span class="black">pending</span>
+
+                                {% endif %}
+            </td>
+            <td>
+			                    {% if book.status == 0 %}
+                                <a href="{% url 'accept_book' booking_id=book.id %}" class="btn btn-success" >Accept</a>
+                                <a class="btn btn-danger" href="{% url 'reject_book' booking_id=book.id %}" >Reject</a>
+                                {% elif book.status == 1  %}
+                                 <button class="btn btn-warning" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Accepted</button>
+                                {% elif book.status == 2 %}
+                                <button class="btn btn-danger" disabled="disabled" data-toggle="modal" data-target="#reply_modal">Rejected</button>
+                                {% else %}
+                                <button class="btn btn-danger" disabled="disabled" data-toggle="modal" data-target="#reply_modal">canceled</button>
+                                {% endif %}
+                            </td>
+	{% empty %}
+	<td>There is No Bookings</td>
+
+
+
+	</tr>
+	{% endfor %}
+	</tbody>
+</table><br>
+{% include 'footer.html' %}
